@@ -1,0 +1,113 @@
+<div class="shadow-card bg-white p-6 rounded-xl space-y-6">
+  <div class="text-xl font-semibold text-center">Driver Information</div>
+
+  <div class="grid md:grid-cols-2 gap-6">
+    <!-- Age -->
+    <div class="space-y-2">
+      <label for="age" class="block font-medium">Age *</label>
+      <select
+        id="age"
+        [(ngModel)]="data.age"
+        (ngModelChange)="handleInputChange('age', $event)"
+        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring"
+        [ngClass]="{ 'border-red-500': errors['age'] }"
+      >
+        <option value="" disabled>Select age range</option>
+        <option value="16-25">16-25</option>
+        <option value="26-35">26-35</option>
+        <option value="36-45">36-45</option>
+        <option value="46-55">46-55</option>
+        <option value="56-65">56-65</option>
+        <option value="65+">65+</option>
+      </select>
+      <p *ngIf="errors['age']" class="text-sm text-red-500">
+        {{ errors["age"] }}
+      </p>
+    </div>
+
+    <!-- Experience -->
+    <div class="space-y-2">
+      <label for="experience" class="block font-medium"
+        >Years of Driving Experience *</label
+      >
+      <select
+        id="experience"
+        [(ngModel)]="data.experience"
+        (ngModelChange)="handleInputChange('experience', $event)"
+        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring"
+        [ngClass]="{ 'border-red-500': errors['experience'] }"
+      >
+        <option value="" disabled>Select experience</option>
+        <option value="0-2">0-2 years</option>
+        <option value="3-5">3-5 years</option>
+        <option value="6-10">6-10 years</option>
+        <option value="11-15">11-15 years</option>
+        <option value="16-20">16-20 years</option>
+        <option value="20+">20+ years</option>
+      </select>
+      <p *ngIf="errors['experience']" class="text-sm text-red-500">
+        {{ errors["experience"] }}
+      </p>
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6">
+    <!-- Violations -->
+    <div class="space-y-2">
+      <label for="violations" class="block font-medium"
+        >Traffic Violations (Last 3 Years) *</label
+      >
+      <select
+        id="violations"
+        [(ngModel)]="data.violations"
+        (ngModelChange)="handleInputChange('violations', $event)"
+        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring"
+        [ngClass]="{ 'border-red-500': errors['violations'] }"
+      >
+        <option value="" disabled>Select violations</option>
+        <option value="none">None</option>
+        <option value="1">1 violation</option>
+        <option value="2">2 violations</option>
+        <option value="3+">3+ violations</option>
+      </select>
+      <p *ngIf="errors['violations']" class="text-sm text-red-500">
+        {{ errors["violations"] }}
+      </p>
+    </div>
+
+    <!-- ZIP Code -->
+    <div class="space-y-2">
+      <label for="zipCode" class="block font-medium">ZIP Code *</label>
+      <input
+        type="text"
+        id="zipCode"
+        maxlength="5"
+        [(ngModel)]="data.zipCode"
+        (ngModelChange)="handleInputChange('zipCode', $event)"
+        placeholder="Enter ZIP code"
+        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring"
+        [ngClass]="{ 'border-red-500': errors['zipCode'] }"
+      />
+      <p *ngIf="errors['zipCode']" class="text-sm text-red-500">
+        {{ errors["zipCode"] }}
+      </p>
+    </div>
+  </div>
+
+  <div class="flex justify-between pt-6">
+    <button
+      type="button"
+      (click)="handlePrevious()"
+      class="border px-6 py-2 rounded-md"
+    >
+      Previous
+    </button>
+    <button
+      type="button"
+      (click)="handleNext()"
+      class="bg-insurance-blue hover:bg-insurance-blue/90 text-white px-8 py-2 rounded-md"
+    >
+      Continue
+    </button>
+  </div>
+</div>

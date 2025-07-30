@@ -1,0 +1,150 @@
+<div *ngIf="!showQuoteForm" class="min-h-screen bg-background">
+  <!-- Hero Section -->
+  <section class="relative bg-hero-gradient text-white overflow-hidden">
+    <div class="absolute inset-0 bg-black/10"></div>
+    <div class="relative container mx-auto px-4 py-20 md:py-32">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+          Get Your Car Insurance Quote in
+          <span class="text-insurance-blue-light"> Minutes</span>
+        </h1>
+        <p class="text-xl md:text-2xl mb-8 opacity-90 leading-relaxed">
+          Compare rates, save money, and get covered with our simple online
+          process. Trusted by thousands of drivers across the country.
+        </p>
+        <button
+          (click)="getQuote()"
+          class="bg-insurance-green hover:bg-insurance-green/90 text-white text-lg px-8 py-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+        >
+          Get My Quote Now
+        </button>
+        <p class="text-sm mt-4 opacity-75">
+          Free quotes • No hidden fees • 2-minute process
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-20 bg-background">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          Why Choose Our Insurance?
+        </h2>
+        <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+          We make car insurance simple, affordable, and reliable.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div
+          class="text-center shadow-card hover:shadow-lg transition-all duration-300 hover:-translate-y-1 p-6 rounded-lg bg-white"
+        >
+          <div
+            class="w-16 h-16 bg-insurance-blue/10 rounded-full flex items-center justify-center mx-auto mb-4"
+          >
+            <lucide-icon
+              name="shield"
+              class="w-8 h-8 text-insurance-blue"
+            ></lucide-icon>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Comprehensive Coverage</h3>
+          <p class="text-base text-muted-foreground">
+            Full protection for your vehicle, from accidents to theft. We've got
+            you covered on the road and beyond.
+          </p>
+        </div>
+
+        <div
+          class="text-center shadow-card hover:shadow-lg transition-all duration-300 hover:-translate-y-1 p-6 rounded-lg bg-white"
+        >
+          <div
+            class="w-16 h-16 bg-insurance-green/10 rounded-full flex items-center justify-center mx-auto mb-4"
+          >
+            <lucide-icon
+              name="clock"
+              class="w-8 h-8 text-insurance-green"
+            ></lucide-icon>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Quick & Easy Process</h3>
+          <p class="text-base text-muted-foreground">
+            Get your quote in under 2 minutes. Our streamlined process means
+            less time on paperwork, more time on the road.
+          </p>
+        </div>
+
+        <div
+          class="text-center shadow-card hover:shadow-lg transition-all duration-300 hover:-translate-y-1 p-6 rounded-lg bg-white"
+        >
+          <div
+            class="w-16 h-16 bg-insurance-blue/10 rounded-full flex items-center justify-center mx-auto mb-4"
+          >
+            <lucide-icon
+              name="car"
+              class="w-8 h-8 text-insurance-blue"
+            ></lucide-icon>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Competitive Rates</h3>
+          <p class="text-base text-muted-foreground">
+            Compare multiple insurance options and find the best rate for your
+            needs. Save hundreds on your annual premium.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Indicators -->
+  <section class="py-16 bg-secondary/50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h3 class="text-2xl font-bold text-center mb-12">
+          Trusted by Over 100,000 Drivers
+        </h3>
+        <div class="grid md:grid-cols-3 gap-8 text-center">
+          <div class="flex items-center justify-center space-x-3">
+            <lucide-icon
+              name="circle-check-big"
+              class="w-6 h-6 text-insurance-green"
+            ></lucide-icon>
+            <span class="text-lg font-medium">A+ Rated Service</span>
+          </div>
+          <div class="flex items-center justify-center space-x-3">
+            <lucide-icon
+              name="circle-check-big"
+              class="w-6 h-6 text-insurance-green"
+            ></lucide-icon>
+            <span class="text-lg font-medium">24/7 Customer Support</span>
+          </div>
+          <div class="flex items-center justify-center space-x-3">
+            <lucide-icon
+              name="circle-check-big"
+              class="w-6 h-6 text-insurance-green"
+            ></lucide-icon>
+            <span class="text-lg font-medium">Fast Claims Processing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-insurance-gradient text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Ready to Save on Car Insurance?
+      </h2>
+      <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+        Join thousands of satisfied customers who switched and saved. Get your
+        personalized quote today.
+      </p>
+      <button
+        (click)="getQuote()"
+        class="bg-white text-insurance-blue hover:bg-gray-50 text-lg px-8 py-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+      >
+        Start Your Quote
+      </button>
+    </div>
+  </section>
+</div>

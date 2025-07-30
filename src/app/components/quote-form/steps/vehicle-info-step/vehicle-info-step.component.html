@@ -1,0 +1,90 @@
+<div class="shadow-card bg-white p-6 rounded-xl space-y-6">
+  <div class="text-xl font-semibold text-center">
+    Tell us about your vehicle
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6">
+    <!-- Year -->
+    <div class="space-y-2">
+      <label for="year" class="block font-medium">Year *</label>
+      <select
+        id="year"
+        [(ngModel)]="data.year"
+        (ngModelChange)="handleInputChange('year', $event)"
+        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring"
+        [ngClass]="{ 'border-red-500': errors.year }"
+      >
+        <option value="" disabled>Select year</option>
+        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+      </select>
+      <p *ngIf="errors.year" class="text-sm text-red-500">{{ errors.year }}</p>
+    </div>
+
+    <!-- Make -->
+    <div class="space-y-2">
+      <label for="make" class="block font-medium">Make *</label>
+      <select
+        id="make"
+        [(ngModel)]="data.make"
+        (ngModelChange)="handleInputChange('make', $event)"
+        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring"
+        [ngClass]="{ 'border-red-500': errors.make }"
+      >
+        <option value="" disabled>Select make</option>
+        <option *ngFor="let make of carMakes" [value]="make">{{ make }}</option>
+      </select>
+      <p *ngIf="errors.make" class="text-sm text-red-500">{{ errors.make }}</p>
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6">
+    <!-- Model -->
+    <div class="space-y-2">
+      <label for="model" class="block font-medium">Model *</label>
+      <input
+        id="model"
+        type="text"
+        [(ngModel)]="data.model"
+        (ngModelChange)="handleInputChange('model', $event)"
+        placeholder="Enter model"
+        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring"
+        [ngClass]="{ 'border-red-500': errors.model }"
+      />
+      <p *ngIf="errors.model" class="text-sm text-red-500">
+        {{ errors.model }}
+      </p>
+    </div>
+
+    <!-- Mileage -->
+    <div class="space-y-2">
+      <label for="mileage" class="block font-medium">Annual Mileage *</label>
+      <select
+        id="mileage"
+        [(ngModel)]="data.mileage"
+        (ngModelChange)="handleInputChange('mileage', $event)"
+        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring"
+        [ngClass]="{ 'border-red-500': errors.mileage }"
+      >
+        <option value="" disabled>Select mileage</option>
+        <option value="under-5000">Under 10,000 kms</option>
+        <option value="5000-10000">10,000 - 30,000 kms</option>
+        <option value="10000-15000">30,000 - 40,000 kms</option>
+        <option value="15000-20000">40,000 - 60,000 kms</option>
+        <option value="over-20000">Over 60,000 kms</option>
+      </select>
+      <p *ngIf="errors.mileage" class="text-sm text-red-500">
+        {{ errors.mileage }}
+      </p>
+    </div>
+  </div>
+
+  <div class="flex justify-end pt-6">
+    <button
+      type="button"
+      (click)="handleNext()"
+      class="bg-insurance-blue hover:bg-insurance-blue/90 text-white px-8 py-2 rounded-md"
+    >
+      Continue
+    </button>
+  </div>
+</div>

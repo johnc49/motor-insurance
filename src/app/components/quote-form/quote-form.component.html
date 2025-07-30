@@ -1,0 +1,67 @@
+<div class="min-h-screen bg-background py-8">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <button
+      class="mb-4 text-insurance-blue hover:text-insurance-blue/80"
+      (click)="goBackHome()"
+    >
+      <lucide-icon
+        name="arrow-left"
+        class="w-6 h-6 text-insurance-green"
+      ></lucide-icon>
+      Back to Home
+    </button>
+
+    <div class="card shadow-card">
+      <div class="card-header text-center">
+        <h2 class="text-2xl md:text-3xl text-insurance-blue">Get Your Quote</h2>
+
+        <div class="mt-4">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-sm font-medium">
+              Step {{ currentStep }} of {{ totalSteps }}:
+              {{ stepTitles[currentStep - 1] }}
+            </span>
+            <span class="text-sm text-muted-foreground">
+              {{ progress | number : "1.0-0" }}% Complete
+            </span>
+          </div>
+          <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div class="h-2 bg-blue-500" [style.width.%]="progress"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-container [ngSwitch]="currentStep">
+      <app-vehicle-info-step
+        *ngSwitchCase="1"
+        [data]="quoteData.vehicle"
+        (update)="updateQuoteData('vehicle', $event)"
+        (next)="nextStep()"
+      ></app-vehicle-info-step>
+
+      <app-driver-info-step
+        *ngSwitchCase="2"
+        [data]="quoteData.driver"
+        (update)="updateQuoteData('driver', $event)"
+        (next)="nextStep()"
+        (previous)="prevStep()"
+      ></app-driver-info-step>
+
+      <app-coverage-step
+        *ngSwitchCase="3"
+        [data]="quoteData.coverage"
+        (update)="updateQuoteData('coverage', $event)"
+        (next)="nextStep()"
+        (previous)="prevStep()"
+      ></app-coverage-step>
+
+      <app-quote-results
+        *ngSwitchCase="4"
+        [quoteData]="quoteData"
+        (previous)="prevStep()"
+        (startOver)="resetForm()"
+      ></app-quote-results>
+    </ng-container>
+  </div>
+</div>

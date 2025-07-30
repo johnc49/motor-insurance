@@ -1,0 +1,134 @@
+<div class="shadow-card bg-white p-6 rounded-xl space-y-6">
+  <div class="text-xl font-semibold text-center">Choose Your Coverage</div>
+
+  <!-- Liability Select -->
+  <div class="space-y-2">
+    <label for="liability" class="block font-medium"
+      >Liability Coverage *</label
+    >
+    <select
+      id="liability"
+      [(ngModel)]="data.liability"
+      (ngModelChange)="handleInputChange('liability', $event)"
+      class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring"
+      [ngClass]="{ 'border-red-500': errors.liability }"
+    >
+      <option value="" disabled>Select liability coverage</option>
+      <option value="25/50/25">
+        ZMW 25,000/ZMW 50,000/ZMW 25,000 (Minimum)
+      </option>
+      <option value="50/100/50">
+        ZMW 50,000/ZMW 100,000/ZMW 50,000 (Basic)
+      </option>
+      <option value="100/300/100">
+        ZMW 100,000/ZMW 300,000/ZMW 100,000 (Standard)
+      </option>
+      <option value="250/500/250">
+        ZMW 250,000/ZMW 500,000/ZMW 250,000 (Premium)
+      </option>
+    </select>
+    <p *ngIf="errors.liability" class="text-sm text-red-500">
+      {{ errors.liability }}
+    </p>
+    <p class="text-sm text-muted-foreground">
+      Bodily Injury per person / Bodily Injury per accident / Property Damage
+    </p>
+  </div>
+
+  <!-- Additional Coverage Options -->
+  <div class="space-y-4">
+    <h3 class="text-lg font-semibold">Additional Coverage Options</h3>
+
+    <!-- Collision -->
+    <div class="p-4 border-l-4 border-l-insurance-blue bg-white rounded-md">
+      <div class="flex items-start space-x-3">
+        <input
+          type="checkbox"
+          id="collision"
+          [checked]="data.collision"
+          (ngModelChange)="handleInputChange('collision', $event)"
+          class="mt-1"
+        />
+        <div class="space-y-1 flex-1">
+          <label for="collision" class="text-base font-medium cursor-pointer"
+            >Collision Coverage</label
+          >
+          <p class="text-sm text-muted-foreground">
+            Covers damage to your car from collisions with other vehicles or
+            objects.
+          </p>
+          <div class="flex items-center space-x-1 text-sm text-insurance-blue">
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M13 16h-1v-4h-1m0-4h.01M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"
+              />
+            </svg>
+            <span>Recommended for newer vehicles</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comprehensive -->
+    <div class="p-4 border-l-4 border-l-insurance-blue bg-white rounded-md">
+      <div class="flex items-start space-x-3">
+        <input
+          type="checkbox"
+          id="comprehensive"
+          [checked]="data.comprehensive"
+          (ngModelChange)="handleInputChange('comprehensive', $event)"
+          class="mt-1"
+        />
+        <div class="space-y-1 flex-1">
+          <label
+            for="comprehensive"
+            class="text-base font-medium cursor-pointer"
+            >Comprehensive Coverage</label
+          >
+          <p class="text-sm text-muted-foreground">
+            Covers damage from theft, vandalism, natural disasters, and other
+            non-collision events.
+          </p>
+          <div class="flex items-center space-x-1 text-sm text-insurance-blue">
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M13 16h-1v-4h-1m0-4h.01M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"
+              />
+            </svg>
+            <span>Protects against unexpected events</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="flex justify-between pt-6">
+    <button
+      type="button"
+      (click)="handlePrevious()"
+      class="border border-gray-300 px-6 py-2 rounded-md hover:bg-gray-100"
+    >
+      Previous
+    </button>
+    <button
+      type="button"
+      (click)="handleNext()"
+      class="bg-insurance-blue hover:bg-insurance-blue/90 text-white px-8 py-2 rounded-md"
+    >
+      Get My Quote
+    </button>
+  </div>
+</div>
