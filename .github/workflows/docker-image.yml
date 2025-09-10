@@ -1,12 +1,8 @@
-name: Build and Deploy
+name: Notify Slack on PR Open
 
 on:
-  push:
-    branches:
-      - main
-      - release
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [opened, reopened, ready_for_review]
 
 jobs:
   notify:
@@ -23,7 +19,7 @@ jobs:
                   "color": "#36a64f",
                   "title": "${{ github.event.pull_request.title }}",
                   "title_link": "${{ github.event.pull_request.html_url }}",
-                  "text": "Author: *${{ github.actor }}*\nBranch: `${{ github.head_ref }}`\nJira: `${{ github.event.pull_request.title | split: ' ' | first }}`",
+                  "text": "Author: *${{ github.actor }}*\nBranch: `${{ github.head_ref }}`",
                   "footer": "GitHub → Slack Automation"
                 }
               ]
