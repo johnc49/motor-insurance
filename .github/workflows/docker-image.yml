@@ -11,6 +11,7 @@ jobs:
       - name: Send PR link to Slack
         uses: slackapi/slack-github-action@v1.23.0
         with:
+          channel-id: C09E8ELLDT4 # Slack channel ID
           payload: |
             {
               "text": "🚀 A new Pull Request is ready for review!",
@@ -25,4 +26,4 @@ jobs:
               ]
             }
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
