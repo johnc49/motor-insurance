@@ -1,12 +1,8 @@
-name: Build and Deploy
+name: Notify Slack on PR Open
 
 on:
-  push:
-    branches:
-      - main
-      - release
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [opened, reopened, ready_for_review]
 
 jobs:
   notify:
@@ -15,6 +11,7 @@ jobs:
       - name: Send PR link to Slack
         uses: slackapi/slack-github-action@v1.23.0
         with:
+          channel-id: C09E8ELLDT4 # Slack channel ID
           payload: |
             {
               "text": "🚀 A new Pull Request is ready for review!",
@@ -23,10 +20,10 @@ jobs:
                   "color": "#36a64f",
                   "title": "${{ github.event.pull_request.title }}",
                   "title_link": "${{ github.event.pull_request.html_url }}",
-                  "text": "Author: *${{ github.actor }}*\nBranch: `${{ github.head_ref }}`\nJira: `${{ github.event.pull_request.title | split: ' ' | first }}`",
+                  "text": "Author: *${{ github.actor }}*\nBranch: `${{ github.head_ref }}`",
                   "footer": "GitHub → Slack Automation"
                 }
               ]
             }
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
