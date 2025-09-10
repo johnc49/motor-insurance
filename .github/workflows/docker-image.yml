@@ -1,8 +1,12 @@
-name: Notify Slack on PR Open
+name: Build and Deploy
 
 on:
+  push:
+    branches:
+      - main
+      - release
   pull_request:
-    types: [opened, reopened, ready_for_review]
+    types: [opened, synchronize, reopened]
 
 jobs:
   notify:
